@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NexTech Solutions - Tienda online de tecnología accesible con laptops, smartphones, wearables y accesorios de alto rendimiento. Envíos a todo el país.">
+    <title>NexTech Solutions - Tienda Accesible de Tecnología</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons (Solo decorativos, marcados con aria-hidden) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        /* Estilos de enfoque de alto contraste para baja visión (WCAG 2.4.7 / 2.4.11) */
+        :focus-visible {
+            outline: 3px solid #312e81 !important;
+            outline-offset: 3px !important;
+        }
+
+        /* Utilidad para contenido exclusivo de lectores de pantalla (Screen Readers) */
+        .sr-only {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+
+        /* Enlace de salto visible al recibir foco */
+        .skip-link:focus {
+            position: fixed !important;
+            top: 1rem !important;
+            left: 1rem !important;
+            z-index: 100 !important;
+            width: auto !important;
+            height: auto !important;
+            padding: 0.75rem 1.5rem !important;
+            margin: 0 !important;
+            overflow: visible !important;
+            clip: auto !important;
+            white-space: normal !important;
+            background-color: #1e1b4b !important;
+            color: #ffffff !important;
+            font-weight: 700 !important;
+            border-radius: 0.5rem !important;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4) !important;
+            outline: 3px solid #facc15 !important;
+            outline-offset: 2px !important;
+        }
+
+        /* Transiciones de la ventana modal */
+        #productModal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        #modalContent {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 flex flex-col min-h-screen relative">
+
+    <!-- ENLACE DE SALTO (Bypass Blocks - WCAG 2.4.1 para ciegos y navegación por teclado) -->
+    <a href="#main-content" class="sr-only skip-link">
+        Saltar al contenido principal
+    </a>
+
+    <!-- REGION 1: HEADER (role="banner") -->
+    <header role="banner" class="bg-indigo-900 text-white shadow-md relative overflow-hidden">
+        <div class="container mx-auto px-6 py-10 relative z-10">
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-3">
+                <span lang="en">NexTech Solutions</span>
+            </h1>
+            <p class="text-indigo-100 text-lg sm:text-xl max-w-3xl leading-relaxed">
+                Equipando tu futuro con tecnología de alto rendimiento. Catálogo optimizado con accesibilidad integral para personas ciegas y de baja visión.
+            </p>
+        </div>
+    </header>
+
+    <!-- REGION 2: NAV (role="navigation") -->
+    <nav role="navigation" aria-label="Navegación principal" class="bg-white border-b-2 border-indigo-100 shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-6 py-4 flex flex-wrap justify-between items-center gap-4">
+            <a href="#catalogo" aria-label="NexTech - Ir al inicio del catálogo" class="font-extrabold text-indigo-900 text-2xl tracking-wide hover:text-indigo-700 transition-colors">
+                <span lang="en">NexTech</span>
+            </a>
+            
+            <ul class="flex flex-wrap items-center space-x-1 sm:space-x-6 text-base font-semibold">
+                <li>
+                    <a href="#catalogo" class="text-gray-800 hover:text-indigo-800 hover:underline px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5">
+                        <i class="ph ph-shopping-bag text-lg text-indigo-700" aria-hidden="true"></i>
+                        <span>Catálogo</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#envios" class="text-gray-800 hover:text-indigo-800 hover:underline px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5">
+                        <i class="ph ph-truck text-lg text-indigo-700" aria-hidden="true"></i>
+                        <span>Envíos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#contacto" class="text-gray-800 hover:text-indigo-800 hover:underline px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5">
+                        <i class="ph ph-envelope-simple text-lg text-indigo-700" aria-hidden="true"></i>
+                        <span>Contacto</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- REGION 3: MAIN (role="main") -->
+    <main id="main-content" role="main" tabindex="-1" class="flex-grow container mx-auto px-6 py-12 space-y-24 focus:outline-none">
+
+        <!-- SECCIÓN 1: CATÁLOGO DE PRODUCTOS -->
+        <section id="catalogo" aria-labelledby="heading-catalogo" class="scroll-mt-24">
+            <div class="text-center mb-12">
+                <h2 id="heading-catalogo" class="text-3xl sm:text-4xl font-extrabold text-gray-900">
+                    Nuestros Productos
+                </h2>
+                <p class="mt-4 text-gray-700 text-lg max-w-2xl mx-auto leading-relaxed">
+                    Explora nuestra selección de dispositivos. Puedes activar el botón "Ver detalles" de cada producto para leer especificaciones y opiniones reales.
+                </p>
+            </div>
+
+            <!-- Grid de Productos (Generado vía JS con artículos semánticos y alt texts descriptivos) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="productGrid">
+                <!-- Se inyectan las tarjetas de productos -->
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: TABLA DE DATOS TABULARES (Tarifas y Tiempos de Envío) -->
+        <section id="envios" aria-labelledby="heading-envios" class="scroll-mt-24">
+            <div class="bg-white rounded-2xl shadow-sm border-2 border-gray-200 overflow-hidden">
+                <div class="px-6 py-5 border-b-2 border-gray-200 bg-gray-50 flex items-center gap-3">
+                    <i class="ph ph-info text-3xl text-indigo-800" aria-hidden="true"></i>
+                    <div>
+                        <h2 id="heading-envios" class="text-2xl font-bold text-gray-900">
+                            Tarifas y Tiempos de Envío
+                        </h2>
+                        <p class="text-sm text-gray-700 mt-1">
+                            Consulta la cobertura disponible, tiempos estimados y costos de envío en pesos mexicanos (MXN).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto p-4 sm:p-6">
+                    <table class="w-full text-left border-collapse border border-gray-300">
+                        <!-- Caption descriptivo para lectores de pantalla -->
+                        <caption class="sr-only">
+                            Tabla comparativa de opciones de envío por zona de cobertura, indicando plazos de entrega en días hábiles y costos para envío estándar y exprés.
+                        </caption>
+                        <thead>
+                            <tr class="bg-gray-100 text-gray-900 text-sm sm:text-base border-b-2 border-gray-300">
+                                <th scope="col" id="col-zona" class="px-6 py-4 font-bold border-r border-gray-300">
+                                    Zona de Cobertura
+                                </th>
+                                <th scope="col" id="col-estandar" class="px-6 py-4 font-bold border-r border-gray-300">
+                                    Envío Estándar
+                                </th>
+                                <th scope="col" id="col-expres" class="px-6 py-4 font-bold border-r border-gray-300">
+                                    Envío Exprés
+                                </th>
+                                <th scope="col" id="col-costo" class="px-6 py-4 font-bold">
+                                    Costo (Estándar / Exprés)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200 text-gray-800 text-base">
+                            <tr class="hover:bg-indigo-50/70 transition-colors">
+                                <th scope="row" id="row-colima" class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200">
+                                    Nacional (Estado de Colima)
+                                </th>
+                                <td headers="col-estandar row-colima" class="px-6 py-4 border-r border-gray-200">
+                                    1 a 2 días hábiles
+                                </td>
+                                <td headers="col-expres row-colima" class="px-6 py-4 border-r border-gray-200">
+                                    Mismo día
+                                </td>
+                                <td headers="col-costo row-colima" class="px-6 py-4">
+                                    <span class="text-green-800 font-bold bg-green-100 px-2.5 py-0.5 rounded-md">Gratis</span> / $99 MXN
+                                </td>
+                            </tr>
+                            <tr class="bg-gray-50/60 hover:bg-indigo-50/70 transition-colors">
+                                <th scope="row" id="row-republica" class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200">
+                                    Nacional (Resto de la República)
+                                </th>
+                                <td headers="col-estandar row-republica" class="px-6 py-4 border-r border-gray-200">
+                                    3 a 5 días hábiles
+                                </td>
+                                <td headers="col-expres row-republica" class="px-6 py-4 border-r border-gray-200">
+                                    1 a 2 días hábiles
+                                </td>
+                                <td headers="col-costo row-republica" class="px-6 py-4 font-medium text-gray-900">
+                                    $150 MXN / $299 MXN
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-indigo-50/70 transition-colors">
+                                <th scope="row" id="row-norteamerica" class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200">
+                                    Norteamérica (Estados Unidos y Canadá)
+                                </th>
+                                <td headers="col-estandar row-norteamerica" class="px-6 py-4 border-r border-gray-200">
+                                    5 a 7 días hábiles
+                                </td>
+                                <td headers="col-expres row-norteamerica" class="px-6 py-4 border-r border-gray-200">
+                                    2 a 3 días hábiles
+                                </td>
+                                <td headers="col-costo row-norteamerica" class="px-6 py-4 font-medium text-gray-900">
+                                    $450 MXN / $850 MXN
+                                </td>
+                            </tr>
+                            <tr class="bg-gray-50/60 hover:bg-indigo-50/70 transition-colors">
+                                <th scope="row" id="row-internacional" class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200">
+                                    Internacional (Resto del mundo)
+                                </th>
+                                <td headers="col-estandar row-internacional" class="px-6 py-4 border-r border-gray-200">
+                                    10 a 15 días hábiles
+                                </td>
+                                <td headers="col-expres row-internacional" class="px-6 py-4 border-r border-gray-200">
+                                    5 a 7 días hábiles
+                                </td>
+                                <td headers="col-costo row-internacional" class="px-6 py-4 font-medium text-gray-900">
+                                    $900 MXN / $1,500 MXN
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: FORMULARIO CORTO ACCESIBLE (Soporte y Contacto) -->
+        <section id="contacto" aria-labelledby="heading-contacto" class="scroll-mt-24 max-w-3xl mx-auto pb-12">
+            <div class="text-center mb-10">
+                <h2 id="heading-contacto" class="text-3xl sm:text-4xl font-extrabold text-gray-900">
+                    Soporte y Contacto
+                </h2>
+                <p class="mt-4 text-gray-700 text-lg leading-relaxed">
+                    ¿Tienes dudas técnicas o necesitas asesoría? Envíanos tu mensaje y nuestro equipo responderá en un plazo máximo de 24 horas.
+                </p>
+            </div>
+
+            <div class="bg-white p-8 sm:p-10 rounded-2xl shadow-lg border-2 border-gray-200 relative">
+                
+                <!-- Región en vivo para anuncios inmediatos a lectores de pantalla -->
+                <div id="liveAnnouncement" role="status" aria-live="polite" class="sr-only"></div>
+
+                <!-- Mensaje de éxito visual y accesible tras el envío -->
+                <div id="successMessage" class="hidden bg-green-50 rounded-xl p-8 text-center border-2 border-green-600 mb-6" tabindex="-1">
+                    <div class="w-16 h-16 bg-green-100 text-green-800 rounded-full flex items-center justify-center mx-auto mb-4" aria-hidden="true">
+                        <i class="ph ph-check-circle text-4xl"></i>
+                    </div>
+                    <h3 id="successHeading" class="text-2xl font-bold text-gray-900 mb-2">
+                        ¡Consulta Enviada Correctamente!
+                    </h3>
+                    <p class="text-gray-800 mb-6 text-base">
+                        Hemos recibido tu solicitud. Uno de nuestros asesores especializados te responderá al correo electrónico indicado.
+                    </p>
+                    <button type="button" onclick="resetForm()" class="bg-indigo-800 hover:bg-indigo-900 text-white font-bold py-2.5 px-6 rounded-lg transition-colors focus:ring-4 focus:ring-indigo-300">
+                        Enviar otra consulta
+                    </button>
+                </div>
+
+                <!-- Formulario estructurado con Fieldset y Legend -->
+                <form id="contactForm" class="space-y-6" novalidate>
+                    <p class="text-sm text-gray-700 bg-gray-50 p-3 rounded-lg border border-gray-200">
+                        Los campos marcados con asterisco (<span class="text-red-700 font-bold" aria-hidden="true">*</span>) son obligatorios.
+                    </p>
+
+                    <fieldset class="space-y-6 border-0 p-0 m-0">
+                        <legend class="sr-only">Formulario de consulta y atención a clientes</legend>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Campo Nombre -->
+                            <div>
+                                <label for="name" class="block text-sm font-bold text-gray-900 mb-1">
+                                    Nombre Completo <span class="text-red-700 font-bold" aria-hidden="true">*</span>
+                                    <span class="sr-only">(campo obligatorio)</span>
+                                </label>
+                                <input type="text" id="name" name="name" autocomplete="name" required aria-required="true" aria-describedby="name-desc name-error" placeholder="Ej. Ana García" 
+                                    class="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-xl text-gray-900 font-medium focus:border-indigo-800 focus:ring-4 focus:ring-indigo-100 outline-none transition-all">
+                                <p id="name-desc" class="text-xs text-gray-600 mt-1">Ingresa tu nombre y apellido.</p>
+                                <p id="name-error" class="hidden text-xs text-red-700 font-bold mt-1" role="alert"></p>
+                            </div>
+
+                            <!-- Campo Correo -->
+                            <div>
+                                <label for="email" class="block text-sm font-bold text-gray-900 mb-1">
+                                    Correo Electrónico <span class="text-red-700 font-bold" aria-hidden="true">*</span>
+                                    <span class="sr-only">(campo obligatorio)</span>
+                                </label>
+                                <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" aria-describedby="email-desc email-error" placeholder="ana@ejemplo.com" 
+                                    class="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-xl text-gray-900 font-medium focus:border-indigo-800 focus:ring-4 focus:ring-indigo-100 outline-none transition-all">
+                                <p id="email-desc" class="text-xs text-gray-600 mt-1">Dirección a la cual enviaremos la respuesta.</p>
+                                <p id="email-error" class="hidden text-xs text-red-700 font-bold mt-1" role="alert"></p>
+                            </div>
+                        </div>
+
+                        <!-- Campo Asunto -->
+                        <div>
+                            <label for="asunto" class="block text-sm font-bold text-gray-900 mb-1">
+                                Motivo de la Consulta <span class="text-red-700 font-bold" aria-hidden="true">*</span>
+                                <span class="sr-only">(campo obligatorio)</span>
+                            </label>
+                            <select id="asunto" name="asunto" required aria-required="true" 
+                                class="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-xl text-gray-900 font-medium focus:border-indigo-800 focus:ring-4 focus:ring-indigo-100 outline-none transition-all">
+                                <option value="producto">Duda sobre especificaciones de un producto</option>
+                                <option value="envio">Estado y seguimiento de un envío</option>
+                                <option value="garantia">Garantía, cambios o soporte técnico</option>
+                                <option value="empresas">Cotización para empresas o compras al por mayor</option>
+                            </select>
+                        </div>
+
+                        <!-- Campo Mensaje -->
+                        <div>
+                            <label for="message" class="block text-sm font-bold text-gray-900 mb-1">
+                                Mensaje <span class="text-red-700 font-bold" aria-hidden="true">*</span>
+                                <span class="sr-only">(campo obligatorio)</span>
+                            </label>
+                            <textarea id="message" name="message" rows="4" required aria-required="true" aria-describedby="msg-desc msg-error" placeholder="Describe detalladamente tus requerimientos o preguntas..."
+                                class="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-xl text-gray-900 font-medium focus:border-indigo-800 focus:ring-4 focus:ring-indigo-100 outline-none transition-all resize-y"></textarea>
+                            <p id="msg-desc" class="text-xs text-gray-600 mt-1">Escribe tu duda con el mayor detalle posible.</p>
+                            <p id="msg-error" class="hidden text-xs text-red-700 font-bold mt-1" role="alert"></p>
+                        </div>
+
+                        <!-- Botón Enviar -->
+                        <button type="submit" class="w-full bg-indigo-800 hover:bg-indigo-900 text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition-all focus:ring-4 focus:ring-indigo-300 focus:outline-none">
+                            Enviar Consulta
+                        </button>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- REGION 4: FOOTER (role="contentinfo") -->
+    <footer role="contentinfo" class="bg-gray-900 text-gray-300 py-12 mt-auto border-t-4 border-indigo-700">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-white text-xl font-bold mb-4">
+                    <span lang="en">NexTech Solutions</span>
+                </h3>
+                <p class="text-sm leading-relaxed text-gray-300">
+                    Comprometidos con el desarrollo de tecnología accesible, diseño inclusivo y alto desempeño para todo tipo de usuarios en el mundo.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-white text-xl font-bold mb-4">
+                    Enlaces Rápidos
+                </h3>
+                <ul class="space-y-3 text-sm">
+                    <li>
+                        <a href="#catalogo" class="hover:text-white underline hover:no-underline transition-colors">
+                            Ir al Catálogo de Productos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#envios" class="hover:text-white underline hover:no-underline transition-colors">
+                            Consultar Información de Envíos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contacto" class="hover:text-white underline hover:no-underline transition-colors">
+                            Soporte y Formulario de Contacto
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-white text-xl font-bold mb-4">
+                    Conecta en Redes Sociales
+                </h3>
+                <p class="text-sm mb-4 text-gray-300">
+                    Síguenos en nuestras plataformas oficiales (los enlaces se abrirán en una nueva pestaña del navegador):
+                </p>
+                <div class="flex space-x-4">
+                    <a href="https://www.x.com/" target="_blank" rel="noopener noreferrer" 
+                        aria-label="Perfil oficial de NexTech en X (anteriormente Twitter, abre en una nueva pestaña)" 
+                        class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-indigo-700 hover:text-white transition-colors focus:ring-4 focus:ring-indigo-400 focus:outline-none">
+                        <i class="ph ph-twitter-logo text-2xl" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" 
+                        aria-label="Perfil oficial de NexTech en Instagram (abre en una nueva pestaña)" 
+                        class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-indigo-700 hover:text-white transition-colors focus:ring-4 focus:ring-indigo-400 focus:outline-none">
+                        <i class="ph ph-instagram-logo text-2xl" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" 
+                        aria-label="Perfil oficial de NexTech en LinkedIn (abre en una nueva pestaña)" 
+                        class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-indigo-700 hover:text-white transition-colors focus:ring-4 focus:ring-indigo-400 focus:outline-none">
+                        <i class="ph ph-linkedin-logo text-2xl" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 mt-12 pt-8 border-t border-gray-800 text-sm text-center text-gray-400">
+            &copy; 2026 <span lang="en">NexTech Solutions</span>. Sitio web optimizado bajo las pautas internacionales de accesibilidad web <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.1 nivel AA.
+        </div>
+    </footer>
+
+    <!-- VENTANA MODAL ACCESIBLE (role="dialog" con trampa de foco y soporte para lectores de pantalla) -->
+    <div id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" class="fixed inset-0 z-50 invisible opacity-0 bg-gray-900/75 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6" inert>
+        <div id="modalContent" class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto transform scale-95 flex flex-col md:flex-row relative border-2 border-gray-300">
+            
+            <!-- Botón de Cerrar Modal -->
+            <button type="button" id="closeModalBtn" onclick="closeModal()" aria-label="Cerrar ventana de detalles del producto" 
+                class="absolute top-4 right-4 z-10 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-800 hover:bg-gray-200 hover:text-gray-900 transition-colors shadow-sm focus:outline-none focus:ring-4 focus:ring-indigo-600">
+                <i class="ph ph-x text-2xl font-bold" aria-hidden="true"></i>
+            </button>
+
+            <!-- Imagen del Modal con descripción textual detallada -->
+            <div class="w-full md:w-2/5 h-64 md:h-auto bg-gray-100 relative">
+                <img id="modalImage" src="" alt="" class="absolute inset-0 w-full h-full object-cover">
+            </div>
+
+            <!-- Información y Reseñas del Modal -->
+            <div class="w-full md:w-3/5 p-6 sm:p-8 flex flex-col justify-between">
+                <div>
+                    <div class="mb-6">
+                        <span id="modalCategory" class="inline-block bg-indigo-100 text-indigo-900 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                            Categoría
+                        </span>
+                        <h3 id="modalTitle" class="text-3xl font-bold text-gray-900 mt-2 mb-2">
+                            Nombre del Producto
+                        </h3>
+                        <p id="modalPrice" class="text-2xl text-indigo-900 font-extrabold mb-4">
+                            $0.00 MXN
+                        </p>
+                        <p id="modalDesc" class="text-gray-700 text-base leading-relaxed">
+                            Descripción detallada del producto.
+                        </p>
+                    </div>
+                    
+                    <hr class="border-gray-200 mb-6">
+                    
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                            <i class="ph ph-star-fill text-yellow-500 text-xl" aria-hidden="true"></i>
+                            <span>Opiniones de Clientes Verificados</span>
+                        </h4>
+                        <div id="modalReviews" class="space-y-4">
+                            <!-- Reseñas inyectadas con calificaciones descriptivas -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-4 border-t border-gray-100">
+                    <button type="button" id="addToCartBtn" class="w-full bg-indigo-800 hover:bg-indigo-900 text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition-colors flex items-center justify-center gap-2 focus:ring-4 focus:ring-indigo-300 focus:outline-none text-base">
+                        <i class="ph ph-shopping-cart-simple text-xl" aria-hidden="true"></i>
+                        <span>Agregar al Carrito</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LÓGICA JAVASCRIPT CON ACCESIBILIDAD INTEGRAL -->
+    <script>
+        // Catálogo con descripciones visuales detalladas (Alt Text) para personas ciegas
+        const products = [
+            {
+                id: 0,
+                title: "NexBook Pro 16\"",
+                category: "Laptops",
+                price: "$24,999 MXN",
+                image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                imageAlt: "Fotografía de la laptop NexBook Pro de 16 pulgadas abierta sobre un escritorio de madera clara, mostrando su pantalla nítida y acabado metálico plateado.",
+                desc: "Rendimiento ultrapotente para profesionales creativos. Procesador de 12 núcleos, pantalla retina 4K y batería que dura todo el día.",
+                reviews: [
+                    { name: "Carlos Mendoza", rating: 5, text: "Excelente equipo, renderiza videos en 4K sin ningún problema. La pantalla es increíble." },
+                    { name: "Sofía T.", rating: 4, text: "Muy rápida y ligera. El único detalle es que se calienta un poco al jugar, pero para trabajo es un 10/10." }
+                ]
+            },
+            {
+                id: 1,
+                title: "NexPhone X",
+                category: "Smartphones",
+                price: "$18,499 MXN",
+                image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                imageAlt: "Teléfono inteligente NexPhone X mostrado de frente y perfil, exhibiendo una pantalla OLED táctil de bordes finos y módulo de tres cámaras en la parte trasera.",
+                desc: "Captura el mundo con nuestro revolucionario sistema de triple cámara. Pantalla OLED de 120Hz para una fluidez sin precedentes.",
+                reviews: [
+                    { name: "Javier R.", rating: 5, text: "La cámara nocturna es de otro mundo. La batería me dura día y medio con uso intenso." }
+                ]
+            },
+            {
+                id: 2,
+                title: "NexWatch Active",
+                category: "Wearables",
+                price: "$5,299 MXN",
+                image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                imageAlt: "Reloj inteligente NexWatch Active con caja de aluminio negro mate, correa deportiva de silicón y pantalla digital circular con esfera activa.",
+                desc: "Monitorea tu salud 24/7. GPS integrado, resistencia al agua hasta 50m y más de 100 modos de entrenamiento.",
+                reviews: [
+                    { name: "Laura G.", rating: 5, text: "Me encanta para correr. El GPS es muy preciso y sincroniza rapidísimo con el celular." },
+                    { name: "Roberto M.", rating: 4, text: "Buen reloj, correas cómodas. Me gustaría que tuviera más opciones de carátulas." }
+                ]
+            },
+            {
+                id: 3,
+                title: "NexKeys Mecánico",
+                category: "Periféricos",
+                price: "$2,150 MXN",
+                image: "https://images.unsplash.com/photo-1595225476474-87563907a212?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                imageAlt: "Teclado mecánico gamer NexKeys con iluminación RGB multicolor individual en cada tecla y chasis de aluminio oscuro.",
+                desc: "Teclado mecánico con switches táctiles silenciosos. Iluminación RGB personalizable y chasis de aluminio resistente.",
+                reviews: [
+                    { name: "Diego F.", rating: 5, text: "La sensación al escribir es perfecta para programar. No hace ruido excesivo en la oficina." }
+                ]
+            },
+            {
+                id: 4,
+                title: "NexVision Ultrawide",
+                category: "Monitores",
+                price: "$11,800 MXN",
+                image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                imageAlt: "Monitor panorámico curvo de 34 pulgadas NexVision Ultrawide con formato panorámico 21:9 montado sobre un soporte ergonómico.",
+                desc: "Monitor curvo de 34 pulgadas. Formato 21:9 ideal para multitarea extrema y una inmersión total en tus juegos favoritos.",
+                reviews: [
+                    { name: "Elena V.", rating: 5, text: "Cambió por completo mi forma de trabajar. Tener 3 ventanas abiertas al mismo tiempo es una joya." },
+                    { name: "Andrés L.", rating: 5, text: "Los colores vienen muy bien calibrados de fábrica. Excelente para edición de foto." }
+                ]
+            },
+            {
+                id: 5,
+                title: "NexSound Pro ANC",
+                category: "Audio",
+                price: "$4,600 MXN",
+                image: "https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                imageAlt: "Auriculares inalámbricos de diadema NexSound Pro de color negro mate con almohadillas circulares acolchadas de espuma con memoria.",
+                desc: "Audífonos inalámbricos con cancelación de ruido activa superior. Sonido de alta fidelidad y hasta 40 horas de reproducción.",
+                reviews: [
+                    { name: "Mariana S.", rating: 5, text: "La cancelación de ruido aísla todo en el transporte público. Son comodísimos." }
+                ]
+            }
+        ];
+
+        // Renderizado del Catálogo en el DOM
+        const grid = document.getElementById('productGrid');
+        products.forEach(product => {
+            const card = document.createElement('article');
+            card.className = "bg-white rounded-2xl shadow-sm border-2 border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between focus-within:ring-4 focus-within:ring-indigo-500";
+            
+            card.innerHTML = `
+                <div>
+                    <div class="relative overflow-hidden bg-gray-100">
+                        <img src="${product.image}" alt="${product.imageAlt}" loading="lazy" class="w-full h-56 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start gap-2 mb-2">
+                            <h3 class="text-xl font-bold text-gray-900">${product.title}</h3>
+                            <span class="bg-indigo-100 text-indigo-900 text-xs font-bold px-2.5 py-1 rounded-full whitespace-nowrap">
+                                ${product.category}
+                            </span>
+                        </div>
+                        <p class="text-gray-700 text-sm leading-relaxed mb-4">${product.desc}</p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 mt-auto flex items-center justify-between border-t border-gray-100 pt-4">
+                    <span class="text-xl font-extrabold text-gray-900" aria-label="Precio: ${product.price}">
+                        ${product.price}
+                    </span>
+                    <button type="button" onclick="openModal(${product.id})" class="inline-flex items-center gap-1.5 bg-indigo-50 hover:bg-indigo-800 text-indigo-900 hover:text-white font-bold text-sm px-4 py-2.5 rounded-xl border border-indigo-200 transition-colors focus:ring-4 focus:ring-indigo-300 focus:outline-none">
+                        <span>Ver detalles</span>
+                        <span class="sr-only"> y opiniones de ${product.title}</span>
+                        <i class="ph ph-arrow-right font-bold" aria-hidden="true"></i>
+                    </button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+
+        // Lógica de la Modal Accesible
+        const modal = document.getElementById('productModal');
+        const modalContent = document.getElementById('modalContent');
+        let previouslyFocusedElement = null;
+
+        function openModal(id) {
+            previouslyFocusedElement = document.activeElement;
+            const prod = products[id];
+            
+            // Asignar datos e imágenes con descripción alt
+            const modalImg = document.getElementById('modalImage');
+            modalImg.src = prod.image;
+            modalImg.alt = prod.imageAlt;
+            
+            document.getElementById('modalCategory').innerText = prod.category;
+            document.getElementById('modalTitle').innerText = prod.title;
+            document.getElementById('modalPrice').innerText = prod.price;
+            document.getElementById('modalPrice').setAttribute('aria-label', `Precio: ${prod.price}`);
+            document.getElementById('modalDesc').innerText = prod.desc;
+            
+            // Botón del carrito con nombre contextual
+            const cartBtn = document.getElementById('addToCartBtn');
+            cartBtn.setAttribute('aria-label', `Agregar ${prod.title} al carrito de compras`);
+            
+            // Cargar reseñas con información accesible de estrellas
+            const reviewsContainer = document.getElementById('modalReviews');
+            reviewsContainer.innerHTML = '';
+            prod.reviews.forEach(review => {
+                let stars = '';
+                for(let i = 0; i < 5; i++) {
+                    stars += i < review.rating 
+                        ? '<i class="ph-fill ph-star text-yellow-500" aria-hidden="true"></i>' 
+                        : '<i class="ph ph-star text-gray-300" aria-hidden="true"></i>';
+                }
+
+                reviewsContainer.innerHTML += `
+                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-bold text-gray-900 text-sm">${review.name}</span>
+                            <div class="flex text-sm items-center gap-1">
+                                <span class="sr-only">Calificación: ${review.rating} de 5 estrellas. </span>
+                                ${stars}
+                            </div>
+                        </div>
+                        <p class="text-gray-700 text-sm italic">"${review.text}"</p>
+                    </div>
+                `;
+            });
+
+            // Mostrar la modal
+            modal.classList.remove('invisible', 'opacity-0');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+            document.body.style.overflow = 'hidden';
+
+            // Aislar el fondo para lectores de pantalla usando el atributo inert
+            document.querySelector('header').setAttribute('inert', '');
+            document.querySelector('main').setAttribute('inert', '');
+            document.querySelector('footer').setAttribute('inert', '');
+            modal.removeAttribute('inert');
+
+            // Mover el foco al botón de cerrar
+            setTimeout(() => {
+                const closeBtn = document.getElementById('closeModalBtn');
+                if (closeBtn) closeBtn.focus();
+            }, 60);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            // Restaurar navegación en el fondo
+            document.querySelector('header').removeAttribute('inert');
+            document.querySelector('main').removeAttribute('inert');
+            document.querySelector('footer').removeAttribute('inert');
+            modal.setAttribute('inert', '');
+
+            setTimeout(() => {
+                modal.classList.add('invisible');
+                document.body.style.overflow = '';
+                // Restaurar foco al elemento que abrió la modal
+                if (previouslyFocusedElement && typeof previouslyFocusedElement.focus === 'function') {
+                    previouslyFocusedElement.focus();
+                }
+            }, 300);
+        }
+
+        // Cerrar modal al hacer clic en el backdrop
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Cerrar modal con la tecla Escape
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+                closeModal();
+            }
+        });
+
+        // Lógica Accesible del Formulario de Contacto
+        const form = document.getElementById('contactForm');
+        const successMsg = document.getElementById('successMessage');
+        const announcement = document.getElementById('liveAnnouncement');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validación accesible
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageInput = document.getElementById('message');
+            let isValid = true;
+            let firstInvalidInput = null;
+
+            // Validación de Nombre
+            if (!nameInput.value.trim()) {
+                showError('name', 'Por favor, ingresa tu nombre completo.');
+                isValid = false;
+                if (!firstInvalidInput) firstInvalidInput = nameInput;
+            } else {
+                clearError('name');
+            }
+
+            // Validación de Correo
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
+                showError('email', 'Por favor, ingresa un correo electrónico válido (ej. usuario@dominio.com).');
+                isValid = false;
+                if (!firstInvalidInput) firstInvalidInput = emailInput;
+            } else {
+                clearError('email');
+            }
+
+            // Validación de Mensaje
+            if (!messageInput.value.trim()) {
+                showError('message', 'Por favor, escribe el contenido de tu consulta.');
+                isValid = false;
+                if (!firstInvalidInput) firstInvalidInput = messageInput;
+            } else {
+                clearError('message');
+            }
+
+            if (!isValid) {
+                if (firstInvalidInput) {
+                    firstInvalidInput.focus();
+                    announcement.textContent = "El formulario contiene errores. Por favor corrige los campos señalados.";
+                }
+                return;
+            }
+
+            // Si es válido, mostrar éxito
+            form.classList.add('hidden');
+            successMsg.classList.remove('hidden');
+            successMsg.focus();
+            announcement.textContent = "Tu consulta ha sido enviada con éxito. Nos pondremos en contacto contigo en breve.";
+        });
+
+        function showError(fieldId, message) {
+            const input = document.getElementById(fieldId);
+            const errElem = document.getElementById(fieldId + '-error');
+            input.setAttribute('aria-invalid', 'true');
+            input.classList.add('border-red-600', 'bg-red-50');
+            errElem.textContent = message;
+            errElem.classList.remove('hidden');
+        }
+
+        function clearError(fieldId) {
+            const input = document.getElementById(fieldId);
+            const errElem = document.getElementById(fieldId + '-error');
+            input.removeAttribute('aria-invalid');
+            input.classList.remove('border-red-600', 'bg-red-50');
+            errElem.textContent = '';
+            errElem.classList.add('hidden');
+        }
+
+        function resetForm() {
+            form.reset();
+            clearError('name');
+            clearError('email');
+            clearError('message');
+            form.classList.remove('hidden');
+            successMsg.classList.add('hidden');
+            announcement.textContent = "El formulario ha sido restablecido.";
+            document.getElementById('name').focus();
+        }
+    </script>
+</body>
+</html>
