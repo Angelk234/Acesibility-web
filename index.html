@@ -22,7 +22,7 @@
 
         /* Estilos de enfoque de alto contraste para baja visión (WCAG 2.4.7 / 2.4.11) */
         :focus-visible {
-            outline: 3px solid #312e81 !important;
+            outline: 3px solid #1e1b4b !important;
             outline-offset: 3px !important;
         }
 
@@ -61,6 +61,15 @@
             outline-offset: 2px !important;
         }
 
+        /* Bordes de alto contraste en controles de formulario (WCAG 1.4.11 > 3:1) */
+        .form-control-accessible {
+            border: 2px solid #4b5563 !important; /* gray-600: ratio 5.7:1 sobre blanco */
+        }
+        .form-control-accessible:focus {
+            border-color: #1e1b4b !important; /* indigo-950: ratio 14:1 */
+            box-shadow: 0 0 0 4px rgba(67, 56, 202, 0.25) !important;
+        }
+
         /* Transiciones de la ventana modal */
         #productModal {
             transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -78,40 +87,40 @@
     </a>
 
     <!-- REGION 1: HEADER (role="banner") -->
-    <header role="banner" class="bg-indigo-900 text-white shadow-md relative overflow-hidden">
+    <header role="banner" class="bg-indigo-950 text-white shadow-md relative overflow-hidden">
         <div class="container mx-auto px-6 py-10 relative z-10">
             <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-3">
                 <span lang="en">NexTech Solutions</span>
             </h1>
-            <p class="text-indigo-100 text-lg sm:text-xl max-w-3xl leading-relaxed">
+            <p class="text-white text-lg sm:text-xl max-w-3xl leading-relaxed font-medium">
                 Equipando tu futuro con tecnología de alto rendimiento. Catálogo optimizado con accesibilidad integral para personas ciegas y de baja visión.
             </p>
         </div>
     </header>
 
     <!-- REGION 2: NAV (role="navigation") -->
-    <nav role="navigation" aria-label="Navegación principal" class="bg-white border-b-2 border-indigo-100 shadow-sm sticky top-0 z-40">
+    <nav role="navigation" aria-label="Navegación principal" class="bg-white border-b-2 border-indigo-200 shadow-sm sticky top-0 z-40">
         <div class="container mx-auto px-6 py-4 flex flex-wrap justify-between items-center gap-4">
-            <a href="#catalogo" aria-label="NexTech - Ir al inicio del catálogo" class="font-extrabold text-indigo-900 text-2xl tracking-wide hover:text-indigo-700 transition-colors">
+            <a href="#catalogo" aria-label="NexTech - Ir al inicio del catálogo" class="font-extrabold text-indigo-950 text-2xl tracking-wide hover:text-indigo-700 transition-colors">
                 <span lang="en">NexTech</span>
             </a>
             
             <ul class="flex flex-wrap items-center space-x-1 sm:space-x-6 text-base font-semibold">
                 <li>
-                    <a href="#catalogo" class="text-gray-800 hover:text-indigo-800 hover:underline px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5">
-                        <i class="ph ph-shopping-bag text-lg text-indigo-700" aria-hidden="true"></i>
+                    <a href="#catalogo" class="text-gray-900 hover:text-indigo-900 hover:underline px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5">
+                        <i class="ph ph-shopping-bag text-lg text-indigo-800" aria-hidden="true"></i>
                         <span>Catálogo</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#envios" class="text-gray-800 hover:text-indigo-800 hover:underline px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5">
-                        <i class="ph ph-truck text-lg text-indigo-700" aria-hidden="true"></i>
+                    <a href="#envios" class="text-gray-900 hover:text-indigo-900 hover:underline px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5">
+                        <i class="ph ph-truck text-lg text-indigo-800" aria-hidden="true"></i>
                         <span>Envíos</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#contacto" class="text-gray-800 hover:text-indigo-800 hover:underline px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5">
-                        <i class="ph ph-envelope-simple text-lg text-indigo-700" aria-hidden="true"></i>
+                    <a href="#contacto" class="text-gray-900 hover:text-indigo-900 hover:underline px-3 py-2 rounded-lg transition-colors flex items-center gap-1.5">
+                        <i class="ph ph-envelope-simple text-lg text-indigo-800" aria-hidden="true"></i>
                         <span>Contacto</span>
                     </a>
                 </li>
@@ -128,7 +137,7 @@
                 <h2 id="heading-catalogo" class="text-3xl sm:text-4xl font-extrabold text-gray-900">
                     Nuestros Productos
                 </h2>
-                <p class="mt-4 text-gray-700 text-lg max-w-2xl mx-auto leading-relaxed">
+                <p class="mt-4 text-gray-800 text-lg max-w-2xl mx-auto leading-relaxed font-medium">
                     Explora nuestra selección de dispositivos. Puedes activar el botón "Ver detalles" de cada producto para leer especificaciones y opiniones reales.
                 </p>
             </div>
@@ -141,34 +150,34 @@
 
         <!-- SECCIÓN 2: TABLA DE DATOS TABULARES (Tarifas y Tiempos de Envío) -->
         <section id="envios" aria-labelledby="heading-envios" class="scroll-mt-24">
-            <div class="bg-white rounded-2xl shadow-sm border-2 border-gray-200 overflow-hidden">
-                <div class="px-6 py-5 border-b-2 border-gray-200 bg-gray-50 flex items-center gap-3">
-                    <i class="ph ph-info text-3xl text-indigo-800" aria-hidden="true"></i>
+            <div class="bg-white rounded-2xl shadow-sm border-2 border-gray-400 overflow-hidden">
+                <div class="px-6 py-5 border-b-2 border-gray-400 bg-gray-100 flex items-center gap-3">
+                    <i class="ph ph-info text-3xl text-indigo-900" aria-hidden="true"></i>
                     <div>
                         <h2 id="heading-envios" class="text-2xl font-bold text-gray-900">
                             Tarifas y Tiempos de Envío
                         </h2>
-                        <p class="text-sm text-gray-700 mt-1">
+                        <p class="text-sm text-gray-800 mt-1 font-medium">
                             Consulta la cobertura disponible, tiempos estimados y costos de envío en pesos mexicanos (MXN).
                         </p>
                     </div>
                 </div>
 
                 <div class="overflow-x-auto p-4 sm:p-6">
-                    <table class="w-full text-left border-collapse border border-gray-300">
+                    <table class="w-full text-left border-collapse border-2 border-gray-400">
                         <!-- Caption descriptivo para lectores de pantalla -->
                         <caption class="sr-only">
                             Tabla comparativa de opciones de envío por zona de cobertura, indicando plazos de entrega en días hábiles y costos para envío estándar y exprés.
                         </caption>
                         <thead>
-                            <tr class="bg-gray-100 text-gray-900 text-sm sm:text-base border-b-2 border-gray-300">
-                                <th scope="col" id="col-zona" class="px-6 py-4 font-bold border-r border-gray-300">
+                            <tr class="bg-gray-200 text-gray-900 text-sm sm:text-base border-b-2 border-gray-400">
+                                <th scope="col" id="col-zona" class="px-6 py-4 font-bold border-r-2 border-gray-400">
                                     Zona de Cobertura
                                 </th>
-                                <th scope="col" id="col-estandar" class="px-6 py-4 font-bold border-r border-gray-300">
+                                <th scope="col" id="col-estandar" class="px-6 py-4 font-bold border-r-2 border-gray-400">
                                     Envío Estándar
                                 </th>
-                                <th scope="col" id="col-expres" class="px-6 py-4 font-bold border-r border-gray-300">
+                                <th scope="col" id="col-expres" class="px-6 py-4 font-bold border-r-2 border-gray-400">
                                     Envío Exprés
                                 </th>
                                 <th scope="col" id="col-costo" class="px-6 py-4 font-bold">
@@ -176,60 +185,60 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-200 text-gray-800 text-base">
+                        <tbody class="divide-y-2 divide-gray-300 text-gray-900 text-base">
                             <tr class="hover:bg-indigo-50/70 transition-colors">
-                                <th scope="row" id="row-colima" class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200">
+                                <th scope="row" id="row-colima" class="px-6 py-4 font-bold text-gray-900 border-r-2 border-gray-300">
                                     Nacional (Estado de Colima)
                                 </th>
-                                <td headers="col-estandar row-colima" class="px-6 py-4 border-r border-gray-200">
+                                <td headers="col-estandar row-colima" class="px-6 py-4 border-r-2 border-gray-300 font-medium">
                                     1 a 2 días hábiles
                                 </td>
-                                <td headers="col-expres row-colima" class="px-6 py-4 border-r border-gray-200">
+                                <td headers="col-expres row-colima" class="px-6 py-4 border-r-2 border-gray-300 font-medium">
                                     Mismo día
                                 </td>
-                                <td headers="col-costo row-colima" class="px-6 py-4">
-                                    <span class="text-green-800 font-bold bg-green-100 px-2.5 py-0.5 rounded-md">Gratis</span> / $99 MXN
+                                <td headers="col-costo row-colima" class="px-6 py-4 font-bold">
+                                    <span class="text-green-900 bg-green-200 px-2.5 py-0.5 rounded-md border border-green-700 font-extrabold">Gratis</span> / $99 MXN
                                 </td>
                             </tr>
-                            <tr class="bg-gray-50/60 hover:bg-indigo-50/70 transition-colors">
-                                <th scope="row" id="row-republica" class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200">
+                            <tr class="bg-gray-100/70 hover:bg-indigo-50/70 transition-colors">
+                                <th scope="row" id="row-republica" class="px-6 py-4 font-bold text-gray-900 border-r-2 border-gray-300">
                                     Nacional (Resto de la República)
                                 </th>
-                                <td headers="col-estandar row-republica" class="px-6 py-4 border-r border-gray-200">
+                                <td headers="col-estandar row-republica" class="px-6 py-4 border-r-2 border-gray-300 font-medium">
                                     3 a 5 días hábiles
                                 </td>
-                                <td headers="col-expres row-republica" class="px-6 py-4 border-r border-gray-200">
+                                <td headers="col-expres row-republica" class="px-6 py-4 border-r-2 border-gray-300 font-medium">
                                     1 a 2 días hábiles
                                 </td>
-                                <td headers="col-costo row-republica" class="px-6 py-4 font-medium text-gray-900">
+                                <td headers="col-costo row-republica" class="px-6 py-4 font-bold text-gray-900">
                                     $150 MXN / $299 MXN
                                 </td>
                             </tr>
                             <tr class="hover:bg-indigo-50/70 transition-colors">
-                                <th scope="row" id="row-norteamerica" class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200">
+                                <th scope="row" id="row-norteamerica" class="px-6 py-4 font-bold text-gray-900 border-r-2 border-gray-300">
                                     Norteamérica (Estados Unidos y Canadá)
                                 </th>
-                                <td headers="col-estandar row-norteamerica" class="px-6 py-4 border-r border-gray-200">
+                                <td headers="col-estandar row-norteamerica" class="px-6 py-4 border-r-2 border-gray-300 font-medium">
                                     5 a 7 días hábiles
                                 </td>
-                                <td headers="col-expres row-norteamerica" class="px-6 py-4 border-r border-gray-200">
+                                <td headers="col-expres row-norteamerica" class="px-6 py-4 border-r-2 border-gray-300 font-medium">
                                     2 a 3 días hábiles
                                 </td>
-                                <td headers="col-costo row-norteamerica" class="px-6 py-4 font-medium text-gray-900">
+                                <td headers="col-costo row-norteamerica" class="px-6 py-4 font-bold text-gray-900">
                                     $450 MXN / $850 MXN
                                 </td>
                             </tr>
-                            <tr class="bg-gray-50/60 hover:bg-indigo-50/70 transition-colors">
-                                <th scope="row" id="row-internacional" class="px-6 py-4 font-semibold text-gray-900 border-r border-gray-200">
+                            <tr class="bg-gray-100/70 hover:bg-indigo-50/70 transition-colors">
+                                <th scope="row" id="row-internacional" class="px-6 py-4 font-bold text-gray-900 border-r-2 border-gray-300">
                                     Internacional (Resto del mundo)
                                 </th>
-                                <td headers="col-estandar row-internacional" class="px-6 py-4 border-r border-gray-200">
+                                <td headers="col-estandar row-internacional" class="px-6 py-4 border-r-2 border-gray-300 font-medium">
                                     10 a 15 días hábiles
                                 </td>
-                                <td headers="col-expres row-internacional" class="px-6 py-4 border-r border-gray-200">
+                                <td headers="col-expres row-internacional" class="px-6 py-4 border-r-2 border-gray-300 font-medium">
                                     5 a 7 días hábiles
                                 </td>
-                                <td headers="col-costo row-internacional" class="px-6 py-4 font-medium text-gray-900">
+                                <td headers="col-costo row-internacional" class="px-6 py-4 font-bold text-gray-900">
                                     $900 MXN / $1,500 MXN
                                 </td>
                             </tr>
@@ -245,35 +254,35 @@
                 <h2 id="heading-contacto" class="text-3xl sm:text-4xl font-extrabold text-gray-900">
                     Soporte y Contacto
                 </h2>
-                <p class="mt-4 text-gray-700 text-lg leading-relaxed">
+                <p class="mt-4 text-gray-800 text-lg leading-relaxed font-medium">
                     ¿Tienes dudas técnicas o necesitas asesoría? Envíanos tu mensaje y nuestro equipo responderá en un plazo máximo de 24 horas.
                 </p>
             </div>
 
-            <div class="bg-white p-8 sm:p-10 rounded-2xl shadow-lg border-2 border-gray-200 relative">
+            <div class="bg-white p-8 sm:p-10 rounded-2xl shadow-lg border-2 border-gray-400 relative">
                 
                 <!-- Región en vivo para anuncios inmediatos a lectores de pantalla -->
                 <div id="liveAnnouncement" role="status" aria-live="polite" class="sr-only"></div>
 
                 <!-- Mensaje de éxito visual y accesible tras el envío -->
-                <div id="successMessage" class="hidden bg-green-50 rounded-xl p-8 text-center border-2 border-green-600 mb-6" tabindex="-1">
-                    <div class="w-16 h-16 bg-green-100 text-green-800 rounded-full flex items-center justify-center mx-auto mb-4" aria-hidden="true">
+                <div id="successMessage" class="hidden bg-green-50 rounded-xl p-8 text-center border-2 border-green-700 mb-6" tabindex="-1">
+                    <div class="w-16 h-16 bg-green-200 text-green-900 rounded-full flex items-center justify-center mx-auto mb-4" aria-hidden="true">
                         <i class="ph ph-check-circle text-4xl"></i>
                     </div>
                     <h3 id="successHeading" class="text-2xl font-bold text-gray-900 mb-2">
                         ¡Consulta Enviada Correctamente!
                     </h3>
-                    <p class="text-gray-800 mb-6 text-base">
+                    <p class="text-gray-900 mb-6 text-base font-medium">
                         Hemos recibido tu solicitud. Uno de nuestros asesores especializados te responderá al correo electrónico indicado.
                     </p>
-                    <button type="button" onclick="resetForm()" class="bg-indigo-800 hover:bg-indigo-900 text-white font-bold py-2.5 px-6 rounded-lg transition-colors focus:ring-4 focus:ring-indigo-300">
+                    <button type="button" id="resetFormBtn" onclick="resetForm()" aria-label="Enviar otra consulta en el formulario" class="bg-indigo-900 hover:bg-indigo-950 text-white font-bold py-2.5 px-6 rounded-lg transition-colors focus:ring-4 focus:ring-indigo-300">
                         Enviar otra consulta
                     </button>
                 </div>
 
                 <!-- Formulario estructurado con Fieldset y Legend -->
                 <form id="contactForm" class="space-y-6" novalidate>
-                    <p class="text-sm text-gray-700 bg-gray-50 p-3 rounded-lg border border-gray-200">
+                    <p class="text-sm text-gray-900 bg-gray-100 p-3 rounded-lg border-2 border-gray-400 font-semibold">
                         Los campos marcados con asterisco (<span class="text-red-700 font-bold" aria-hidden="true">*</span>) son obligatorios.
                     </p>
 
@@ -283,37 +292,37 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <!-- Campo Nombre -->
                             <div>
-                                <label for="name" class="block text-sm font-bold text-gray-900 mb-1">
+                                <label for="name" id="label-name" class="block text-sm font-bold text-gray-900 mb-1">
                                     Nombre Completo <span class="text-red-700 font-bold" aria-hidden="true">*</span>
                                     <span class="sr-only">(campo obligatorio)</span>
                                 </label>
-                                <input type="text" id="name" name="name" autocomplete="name" required aria-required="true" aria-describedby="name-desc name-error" placeholder="Ej. Ana García" 
-                                    class="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-xl text-gray-900 font-medium focus:border-indigo-800 focus:ring-4 focus:ring-indigo-100 outline-none transition-all">
-                                <p id="name-desc" class="text-xs text-gray-600 mt-1">Ingresa tu nombre y apellido.</p>
-                                <p id="name-error" class="hidden text-xs text-red-700 font-bold mt-1" role="alert"></p>
+                                <input type="text" id="name" name="name" autocomplete="name" required aria-required="true" aria-labelledby="label-name" aria-label="Nombre Completo" aria-describedby="name-desc name-error" placeholder="Ej. Ana García" 
+                                    class="w-full px-4 py-3 bg-white form-control-accessible rounded-xl text-gray-900 font-semibold outline-none transition-all">
+                                <p id="name-desc" class="text-sm text-gray-800 font-medium mt-1">Ingresa tu nombre y apellido.</p>
+                                <p id="name-error" class="hidden text-sm text-red-800 font-bold mt-1" role="alert"></p>
                             </div>
 
                             <!-- Campo Correo -->
                             <div>
-                                <label for="email" class="block text-sm font-bold text-gray-900 mb-1">
+                                <label for="email" id="label-email" class="block text-sm font-bold text-gray-900 mb-1">
                                     Correo Electrónico <span class="text-red-700 font-bold" aria-hidden="true">*</span>
                                     <span class="sr-only">(campo obligatorio)</span>
                                 </label>
-                                <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" aria-describedby="email-desc email-error" placeholder="ana@ejemplo.com" 
-                                    class="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-xl text-gray-900 font-medium focus:border-indigo-800 focus:ring-4 focus:ring-indigo-100 outline-none transition-all">
-                                <p id="email-desc" class="text-xs text-gray-600 mt-1">Dirección a la cual enviaremos la respuesta.</p>
-                                <p id="email-error" class="hidden text-xs text-red-700 font-bold mt-1" role="alert"></p>
+                                <input type="email" id="email" name="email" autocomplete="email" required aria-required="true" aria-labelledby="label-email" aria-label="Correo Electrónico" aria-describedby="email-desc email-error" placeholder="ana@ejemplo.com" 
+                                    class="w-full px-4 py-3 bg-white form-control-accessible rounded-xl text-gray-900 font-semibold outline-none transition-all">
+                                <p id="email-desc" class="text-sm text-gray-800 font-medium mt-1">Dirección a la cual enviaremos la respuesta.</p>
+                                <p id="email-error" class="hidden text-sm text-red-800 font-bold mt-1" role="alert"></p>
                             </div>
                         </div>
 
                         <!-- Campo Asunto -->
                         <div>
-                            <label for="asunto" class="block text-sm font-bold text-gray-900 mb-1">
+                            <label for="asunto" id="label-asunto" class="block text-sm font-bold text-gray-900 mb-1">
                                 Motivo de la Consulta <span class="text-red-700 font-bold" aria-hidden="true">*</span>
                                 <span class="sr-only">(campo obligatorio)</span>
                             </label>
-                            <select id="asunto" name="asunto" required aria-required="true" 
-                                class="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-xl text-gray-900 font-medium focus:border-indigo-800 focus:ring-4 focus:ring-indigo-100 outline-none transition-all">
+                            <select id="asunto" name="asunto" autocomplete="off" required aria-required="true" aria-labelledby="label-asunto" aria-label="Motivo de la Consulta"
+                                class="w-full px-4 py-3 bg-white form-control-accessible rounded-xl text-gray-900 font-semibold outline-none transition-all">
                                 <option value="producto">Duda sobre especificaciones de un producto</option>
                                 <option value="envio">Estado y seguimiento de un envío</option>
                                 <option value="garantia">Garantía, cambios o soporte técnico</option>
@@ -323,18 +332,18 @@
 
                         <!-- Campo Mensaje -->
                         <div>
-                            <label for="message" class="block text-sm font-bold text-gray-900 mb-1">
+                            <label for="message" id="label-message" class="block text-sm font-bold text-gray-900 mb-1">
                                 Mensaje <span class="text-red-700 font-bold" aria-hidden="true">*</span>
                                 <span class="sr-only">(campo obligatorio)</span>
                             </label>
-                            <textarea id="message" name="message" rows="4" required aria-required="true" aria-describedby="msg-desc msg-error" placeholder="Describe detalladamente tus requerimientos o preguntas..."
-                                class="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-xl text-gray-900 font-medium focus:border-indigo-800 focus:ring-4 focus:ring-indigo-100 outline-none transition-all resize-y"></textarea>
-                            <p id="msg-desc" class="text-xs text-gray-600 mt-1">Escribe tu duda con el mayor detalle posible.</p>
-                            <p id="msg-error" class="hidden text-xs text-red-700 font-bold mt-1" role="alert"></p>
+                            <textarea id="message" name="message" rows="4" autocomplete="off" required aria-required="true" aria-labelledby="label-message" aria-label="Mensaje o Consulta" aria-describedby="msg-desc msg-error" placeholder="Describe detalladamente tus requerimientos o preguntas..."
+                                class="w-full px-4 py-3 bg-white form-control-accessible rounded-xl text-gray-900 font-semibold outline-none transition-all resize-y"></textarea>
+                            <p id="msg-desc" class="text-sm text-gray-800 font-medium mt-1">Escribe tu duda con el mayor detalle posible.</p>
+                            <p id="msg-error" class="hidden text-sm text-red-800 font-bold mt-1" role="alert"></p>
                         </div>
 
                         <!-- Botón Enviar -->
-                        <button type="submit" class="w-full bg-indigo-800 hover:bg-indigo-900 text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition-all focus:ring-4 focus:ring-indigo-300 focus:outline-none">
+                        <button type="submit" aria-label="Enviar Consulta por Formulario" class="w-full bg-indigo-900 hover:bg-indigo-950 text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition-all focus:ring-4 focus:ring-indigo-300 focus:outline-none text-base">
                             Enviar Consulta
                         </button>
                     </fieldset>
@@ -345,13 +354,13 @@
     </main>
 
     <!-- REGION 4: FOOTER (role="contentinfo") -->
-    <footer role="contentinfo" class="bg-gray-900 text-gray-300 py-12 mt-auto border-t-4 border-indigo-700">
+    <footer role="contentinfo" class="bg-gray-950 text-gray-100 py-12 mt-auto border-t-4 border-indigo-700">
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
                 <h3 class="text-white text-xl font-bold mb-4">
                     <span lang="en">NexTech Solutions</span>
                 </h3>
-                <p class="text-sm leading-relaxed text-gray-300">
+                <p class="text-sm leading-relaxed text-gray-200 font-medium">
                     Comprometidos con el desarrollo de tecnología accesible, diseño inclusivo y alto desempeño para todo tipo de usuarios en el mundo.
                 </p>
             </div>
@@ -360,19 +369,19 @@
                 <h3 class="text-white text-xl font-bold mb-4">
                     Enlaces Rápidos
                 </h3>
-                <ul class="space-y-3 text-sm">
+                <ul class="space-y-3 text-sm font-semibold">
                     <li>
-                        <a href="#catalogo" class="hover:text-white underline hover:no-underline transition-colors">
+                        <a href="#catalogo" class="text-gray-100 hover:text-white underline hover:no-underline transition-colors">
                             Ir al Catálogo de Productos
                         </a>
                     </li>
                     <li>
-                        <a href="#envios" class="hover:text-white underline hover:no-underline transition-colors">
+                        <a href="#envios" class="text-gray-100 hover:text-white underline hover:no-underline transition-colors">
                             Consultar Información de Envíos
                         </a>
                     </li>
                     <li>
-                        <a href="#contacto" class="hover:text-white underline hover:no-underline transition-colors">
+                        <a href="#contacto" class="text-gray-100 hover:text-white underline hover:no-underline transition-colors">
                             Soporte y Formulario de Contacto
                         </a>
                     </li>
@@ -383,7 +392,7 @@
                 <h3 class="text-white text-xl font-bold mb-4">
                     Conecta en Redes Sociales
                 </h3>
-                <p class="text-sm mb-4 text-gray-300">
+                <p class="text-sm mb-4 text-gray-200 font-medium">
                     Síguenos en nuestras plataformas oficiales (los enlaces se abrirán en una nueva pestaña del navegador):
                 </p>
                 <div class="flex space-x-4">
@@ -406,18 +415,18 @@
             </div>
         </div>
 
-        <div class="container mx-auto px-6 mt-12 pt-8 border-t border-gray-800 text-sm text-center text-gray-400">
+        <div class="container mx-auto px-6 mt-12 pt-8 border-t border-gray-800 text-sm text-center text-gray-200 font-medium">
             &copy; 2026 <span lang="en">NexTech Solutions</span>. Sitio web optimizado bajo las pautas internacionales de accesibilidad web <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.1 nivel AA.
         </div>
     </footer>
 
     <!-- VENTANA MODAL ACCESIBLE (role="dialog" con trampa de foco y soporte para lectores de pantalla) -->
-    <div id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" class="fixed inset-0 z-50 invisible opacity-0 bg-gray-900/75 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6" inert>
-        <div id="modalContent" class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto transform scale-95 flex flex-col md:flex-row relative border-2 border-gray-300">
+    <div id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" class="fixed inset-0 z-50 invisible opacity-0 bg-gray-950/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6" inert>
+        <div id="modalContent" class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto transform scale-95 flex flex-col md:flex-row relative border-2 border-gray-500">
             
             <!-- Botón de Cerrar Modal -->
             <button type="button" id="closeModalBtn" onclick="closeModal()" aria-label="Cerrar ventana de detalles del producto" 
-                class="absolute top-4 right-4 z-10 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-800 hover:bg-gray-200 hover:text-gray-900 transition-colors shadow-sm focus:outline-none focus:ring-4 focus:ring-indigo-600">
+                class="absolute top-4 right-4 z-10 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-900 hover:bg-gray-200 hover:text-gray-950 transition-colors shadow-sm focus:outline-none focus:ring-4 focus:ring-indigo-700 border-2 border-gray-400">
                 <i class="ph ph-x text-2xl font-bold" aria-hidden="true"></i>
             </button>
 
@@ -430,21 +439,21 @@
             <div class="w-full md:w-3/5 p-6 sm:p-8 flex flex-col justify-between">
                 <div>
                     <div class="mb-6">
-                        <span id="modalCategory" class="inline-block bg-indigo-100 text-indigo-900 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+                        <span id="modalCategory" class="inline-block bg-indigo-100 text-indigo-950 text-xs font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full border border-indigo-300">
                             Categoría
                         </span>
                         <h3 id="modalTitle" class="text-3xl font-bold text-gray-900 mt-2 mb-2">
                             Nombre del Producto
                         </h3>
-                        <p id="modalPrice" class="text-2xl text-indigo-900 font-extrabold mb-4">
+                        <p id="modalPrice" class="text-2xl text-indigo-950 font-extrabold mb-4">
                             $0.00 MXN
                         </p>
-                        <p id="modalDesc" class="text-gray-700 text-base leading-relaxed">
+                        <p id="modalDesc" class="text-gray-800 text-base leading-relaxed font-medium">
                             Descripción detallada del producto.
                         </p>
                     </div>
                     
-                    <hr class="border-gray-200 mb-6">
+                    <hr class="border-gray-300 mb-6">
                     
                     <div>
                         <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
@@ -457,8 +466,8 @@
                     </div>
                 </div>
 
-                <div class="mt-8 pt-4 border-t border-gray-100">
-                    <button type="button" id="addToCartBtn" class="w-full bg-indigo-800 hover:bg-indigo-900 text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition-colors flex items-center justify-center gap-2 focus:ring-4 focus:ring-indigo-300 focus:outline-none text-base">
+                <div class="mt-8 pt-4 border-t-2 border-gray-200">
+                    <button type="button" id="addToCartBtn" aria-label="Agregar este producto al carrito de compras" class="w-full bg-indigo-900 hover:bg-indigo-950 text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition-colors flex items-center justify-center gap-2 focus:ring-4 focus:ring-indigo-300 focus:outline-none text-base">
                         <i class="ph ph-shopping-cart-simple text-xl" aria-hidden="true"></i>
                         <span>Agregar al Carrito</span>
                     </button>
@@ -552,7 +561,7 @@
         const grid = document.getElementById('productGrid');
         products.forEach(product => {
             const card = document.createElement('article');
-            card.className = "bg-white rounded-2xl shadow-sm border-2 border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between focus-within:ring-4 focus-within:ring-indigo-500";
+            card.className = "bg-white rounded-2xl shadow-sm border-2 border-gray-400 overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between focus-within:ring-4 focus-within:ring-indigo-700";
             
             card.innerHTML = `
                 <div>
@@ -562,20 +571,19 @@
                     <div class="p-6">
                         <div class="flex justify-between items-start gap-2 mb-2">
                             <h3 class="text-xl font-bold text-gray-900">${product.title}</h3>
-                            <span class="bg-indigo-100 text-indigo-900 text-xs font-bold px-2.5 py-1 rounded-full whitespace-nowrap">
+                            <span class="bg-indigo-100 text-indigo-950 text-xs font-extrabold px-2.5 py-1 rounded-full whitespace-nowrap border border-indigo-300">
                                 ${product.category}
                             </span>
                         </div>
-                        <p class="text-gray-700 text-sm leading-relaxed mb-4">${product.desc}</p>
+                        <p class="text-gray-800 text-sm leading-relaxed mb-4 font-medium">${product.desc}</p>
                     </div>
                 </div>
-                <div class="p-6 pt-0 mt-auto flex items-center justify-between border-t border-gray-100 pt-4">
+                <div class="p-6 pt-0 mt-auto flex items-center justify-between border-t-2 border-gray-200 pt-4">
                     <span class="text-xl font-extrabold text-gray-900" aria-label="Precio: ${product.price}">
                         ${product.price}
                     </span>
-                    <button type="button" onclick="openModal(${product.id})" class="inline-flex items-center gap-1.5 bg-indigo-50 hover:bg-indigo-800 text-indigo-900 hover:text-white font-bold text-sm px-4 py-2.5 rounded-xl border border-indigo-200 transition-colors focus:ring-4 focus:ring-indigo-300 focus:outline-none">
+                    <button type="button" onclick="openModal(${product.id})" aria-label="Ver detalles y opiniones de ${product.title}" class="inline-flex items-center gap-1.5 bg-indigo-50 hover:bg-indigo-900 text-indigo-950 hover:text-white font-bold text-sm px-4 py-2.5 rounded-xl border-2 border-indigo-400 hover:border-indigo-950 transition-colors focus:ring-4 focus:ring-indigo-300 focus:outline-none">
                         <span>Ver detalles</span>
-                        <span class="sr-only"> y opiniones de ${product.title}</span>
                         <i class="ph ph-arrow-right font-bold" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -615,11 +623,11 @@
                 for(let i = 0; i < 5; i++) {
                     stars += i < review.rating 
                         ? '<i class="ph-fill ph-star text-yellow-500" aria-hidden="true"></i>' 
-                        : '<i class="ph ph-star text-gray-300" aria-hidden="true"></i>';
+                        : '<i class="ph ph-star text-gray-400" aria-hidden="true"></i>';
                 }
 
                 reviewsContainer.innerHTML += `
-                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                    <div class="bg-gray-100 p-4 rounded-xl border-2 border-gray-300">
                         <div class="flex items-center justify-between mb-2">
                             <span class="font-bold text-gray-900 text-sm">${review.name}</span>
                             <div class="flex text-sm items-center gap-1">
@@ -627,7 +635,7 @@
                                 ${stars}
                             </div>
                         </div>
-                        <p class="text-gray-700 text-sm italic">"${review.text}"</p>
+                        <p class="text-gray-800 text-sm italic font-medium">"${review.text}"</p>
                     </div>
                 `;
             });
@@ -748,7 +756,8 @@
             const input = document.getElementById(fieldId);
             const errElem = document.getElementById(fieldId + '-error');
             input.setAttribute('aria-invalid', 'true');
-            input.classList.add('border-red-600', 'bg-red-50');
+            input.classList.remove('form-control-accessible');
+            input.classList.add('border-red-700', 'bg-red-50');
             errElem.textContent = message;
             errElem.classList.remove('hidden');
         }
@@ -757,7 +766,8 @@
             const input = document.getElementById(fieldId);
             const errElem = document.getElementById(fieldId + '-error');
             input.removeAttribute('aria-invalid');
-            input.classList.remove('border-red-600', 'bg-red-50');
+            input.classList.remove('border-red-700', 'bg-red-50');
+            input.classList.add('form-control-accessible');
             errElem.textContent = '';
             errElem.classList.add('hidden');
         }
