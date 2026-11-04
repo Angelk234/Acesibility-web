@@ -174,6 +174,10 @@ img {
 #body .featured img {
 	border: 0;
 }
+#body .featured > a:focus-visible img {
+	outline: 3px solid #822619;
+	outline-offset: 3px;
+}
 #body .featured h1,
 #body .featured h2 {
 	font-family :'Lobster1.4Regular', cursive, sans-serif;
