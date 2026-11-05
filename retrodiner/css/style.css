@@ -174,9 +174,21 @@ img {
 #body .featured img {
 	border: 0;
 }
+#body .featured > a,
+#body .featured ul a {
+	display: inline-block;
+	vertical-align: top;
+}
+#body .featured > a img,
+#body .featured ul a img {
+	display: block;
+}
+#body .featured ul a:focus-visible {
+	outline: 5px solid #1b6568 !important;
+	outline-offset: 3px !important;
+}
 #body .featured > a:focus-visible img {
-	outline: 3px solid #822619;
-	outline-offset: 3px;
+	box-shadow: inset 0 0 0 5px #1b6568;
 }
 #body .featured h1,
 #body .featured h2 {
