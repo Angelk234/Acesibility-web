@@ -6,6 +6,19 @@
    <title>Accessibility Exercises - Accessible Contact Form</title>
    
    <style>
+     /* Texto solo para lectores de pantalla (se lee como texto normal, oculto visualmente) */
+     .sr-only {
+       position: absolute !important;
+       width: 1px !important;
+       height: 1px !important;
+       padding: 0 !important;
+       margin: -1px !important;
+       overflow: hidden !important;
+       clip: rect(0, 0, 0, 0) !important;
+       white-space: nowrap !important;
+       border: 0 !important;
+     }
+
      /* Enlace de salto para lectores de pantalla y navegación por teclado (WCAG 2.4.1) */
      .skip-link {
        position: absolute;
@@ -98,23 +111,20 @@
        margin-bottom: 18px;
      }
 
-     label {
-       display: flex;
-       align-items: center;
-       gap: 8px;
+     .field-icon {
+       width: 20px;
+       height: 20px;
+       object-fit: contain;
+       align-self: flex-start;
        margin-bottom: 6px;
-       font-weight: 600;
-       color: #264653;
-       font-size: 0.95rem;
+       padding: 4px;
+       border-radius: 4px;
        cursor: pointer;
      }
 
-     label img {
-       width: 18px;
-       height: 18px;
-       object-fit: contain;
-       margin: 0;
-       vertical-align: middle;
+     .field-icon:focus-visible {
+       outline: 3px solid #e76f51 !important;
+       outline-offset: 2px !important;
      }
 
      /* Campos de entrada con contraste de borde > 3:1 (WCAG 1.4.11) */
@@ -239,12 +249,10 @@
       <fieldset>
         <legend id="form-title">Contact us</legend>
 
-        <!-- Campo 1: Nombre con Label visible + icono + autocomplete (WCAG 1.3.1, 1.3.5, 3.3.2) -->
+        <!-- Campo 1: Icono independiente enfocable y legible por Silktide + label sr-only para el input -->
         <div class="form-control">
-          <label for="name">
-            <img src="icons/usuario.png" alt="" aria-hidden="true" />
-            <!-- <span>Full Name:</span> -->
-          </label>
+          <img src="icons/usuario.png" alt="Full Name" tabindex="0" class="field-icon" onclick="document.getElementById('name').focus()" />
+          <label for="name" class="sr-only">Full Name</label>
           <input 
             type="text" 
             id="name" 
@@ -256,12 +264,10 @@
           />
         </div>
 
-        <!-- Campo 2: Email con Label visible + type="email" + autocomplete (WCAG 1.3.1, 1.3.5) -->
+        <!-- Campo 2: Icono independiente enfocable y legible por Silktide + label sr-only para el input -->
         <div class="form-control">
-          <label for="email">
-            <img src="icons/email.png" alt="" aria-hidden="true" />
-            <!-- <span>Email Address:</span> -->
-          </label>
+          <img src="icons/email.png" alt="Email Address" tabindex="0" class="field-icon" onclick="document.getElementById('email').focus()" />
+          <label for="email" class="sr-only">Email Address</label>
           <input
             type="email"
             id="email"
@@ -273,12 +279,10 @@
           />
         </div>
 
-        <!-- Campo 3: Mensaje con Label visible + textarea accesible (WCAG 1.3.1, 3.3.2) -->
+        <!-- Campo 3: Icono independiente enfocable y legible por Silktide + label sr-only para el input -->
         <div class="form-control">
-          <label for="message">
-            <img src="icons/text-message.png" alt="" aria-hidden="true" />
-            <!-- <span>Your Message:</span> -->
-          </label>
+          <img src="icons/text-message.png" alt="Your Message" tabindex="0" class="field-icon" onclick="document.getElementById('message').focus()" />
+          <label for="message" class="sr-only">Your Message</label>
           <textarea
             id="message"
             name="message"
