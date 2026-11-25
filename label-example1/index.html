@@ -111,20 +111,18 @@
        margin-bottom: 18px;
      }
 
+     label {
+       display: inline-flex;
+       align-self: flex-start;
+       margin-bottom: 6px;
+       cursor: pointer;
+     }
+
      .field-icon {
        width: 20px;
        height: 20px;
        object-fit: contain;
-       align-self: flex-start;
-       margin-bottom: 6px;
-       padding: 4px;
-       border-radius: 4px;
-       cursor: pointer;
-     }
-
-     .field-icon:focus-visible {
-       outline: 3px solid #e76f51 !important;
-       outline-offset: 2px !important;
+       display: block;
      }
 
      /* Campos de entrada con contraste de borde > 3:1 (WCAG 1.4.11) */
@@ -249,47 +247,47 @@
       <fieldset>
         <legend id="form-title">Contact us</legend>
 
-        <!-- Campo 1: Icono independiente enfocable y legible por Silktide + label sr-only para el input -->
+        <!-- Campo 1: <img> con alt dentro de <label> (sin tabindex ni sr-only redundante) -->
         <div class="form-control">
-          <img src="icons/usuario.png" alt="Full Name" tabindex="0" class="field-icon" onclick="document.getElementById('name').focus()" />
-          <label for="name" class="sr-only">Full Name</label>
+          <label for="name">
+            <span class="sr-only">Name</span>
+            <img src="icons/usuario.png" alt="Full Name" class="field-icon" aria-hidden="true" />
+          </label>
           <input 
             type="text" 
             id="name" 
             name="name" 
             autocomplete="name" 
-            required 
-            aria-required="true" 
             placeholder="e.g. John Doe"
           />
         </div>
 
-        <!-- Campo 2: Icono independiente enfocable y legible por Silktide + label sr-only para el input -->
+        <!-- Campo 2: <img> con alt dentro de <label> (sin tabindex ni sr-only redundante) -->
         <div class="form-control">
-          <img src="icons/email.png" alt="Email Address" tabindex="0" class="field-icon" onclick="document.getElementById('email').focus()" />
-          <label for="email" class="sr-only">Email Address</label>
+          <label for="email">
+            <span class="sr-only">Email</span>
+            <img src="icons/email.png" alt="Email Address" class="field-icon" aria-hidden="true" />
+          </label>
           <input
             type="email"
             id="email"
             name="email"
             autocomplete="email"
-            required
-            aria-required="true"
             placeholder="e.g. name@example.com"
           />
         </div>
 
-        <!-- Campo 3: Icono independiente enfocable y legible por Silktide + label sr-only para el input -->
+        <!-- Campo 3: <img> con alt dentro de <label> (sin tabindex ni sr-only redundante) -->
         <div class="form-control">
-          <img src="icons/text-message.png" alt="Your Message" tabindex="0" class="field-icon" onclick="document.getElementById('message').focus()" />
-          <label for="message" class="sr-only">Your Message</label>
+          <label for="message">
+            <span class="sr-only">Your Message</span>
+            <img src="icons/text-message.png" alt="Your Message" class="field-icon" aria-hidden="true" />
+          </label>
           <textarea
             id="message"
             name="message"
             cols="30"
             rows="5"
-            required
-            aria-required="true"
             placeholder="Write your message here..."
           ></textarea>
         </div>
